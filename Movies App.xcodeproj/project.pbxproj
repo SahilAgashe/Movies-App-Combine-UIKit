@@ -15,6 +15,7 @@
 		8198C3CF2C1003F700492B93 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8198C3CE2C1003F700492B93 /* String+Extension.swift */; };
 		8198C3D12C10047300492B93 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8198C3D02C10047300492B93 /* MoviesViewController.swift */; };
 		8198C3D62C10256F00492B93 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8198C3D52C10256F00492B93 /* Movie.swift */; };
+		81C0B6E62C11E07500EC0035 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0B6E52C11E07500EC0035 /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		8198C3CE2C1003F700492B93 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8198C3D02C10047300492B93 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		8198C3D52C10256F00492B93 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		81C0B6E52C11E07500EC0035 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				8198C3D32C10054100492B93 /* Model */,
 				8198C3D42C10055C00492B93 /* ViewModel */,
 				8198C3C82C1002FF00492B93 /* Controller */,
+				81C0B6E42C11E04600EC0035 /* Client */,
 				8198C3CD2C1003D200492B93 /* Extension */,
 				8198C3C92C10030D00492B93 /* Supporting Files */,
 			);
@@ -154,6 +157,14 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		81C0B6E42C11E04600EC0035 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				81C0B6E52C11E07500EC0035 /* HTTPClient.swift */,
+			);
+			path = Client;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +300,7 @@
 			files = (
 				8198C3CF2C1003F700492B93 /* String+Extension.swift in Sources */,
 				8198C3D12C10047300492B93 /* MoviesViewController.swift in Sources */,
+				81C0B6E62C11E07500EC0035 /* HTTPClient.swift in Sources */,
 				8198C3982C10027B00492B93 /* AppDelegate.swift in Sources */,
 				8198C39A2C10027B00492B93 /* SceneDelegate.swift in Sources */,
 				8198C3D62C10256F00492B93 /* Movie.swift in Sources */,
