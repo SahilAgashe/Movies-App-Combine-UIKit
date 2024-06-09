@@ -10,6 +10,7 @@ import Combine
 
 class MovieListViewModel {
     
+    // MARK: - Properties
     @Published private(set) var movies = [Movie]()
     @Published var loadingCompleted = false
     
