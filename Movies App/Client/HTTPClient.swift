@@ -15,6 +15,7 @@ enum NetworkError: Error {
     case badUrl
 }
 
+private let kDebugHTTPClient = "DEBUG HTTPClient:"
 class HTTPClient {
     
     func fetchMovies(search: String) -> AnyPublisher<[Movie], Error> {
@@ -22,8 +23,19 @@ class HTTPClient {
         guard let encodedSearch = search.urlEncoded,
               let url = URL(string: "https://www.omdbapi.com/?s=\(encodedSearch)&apikey=\(API_KEY)")
         else {
+            print("\(kDebugHTTPClient) guard let error!")
             return Fail(error: NetworkError.badUrl).eraseToAnyPublisher()
         }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data) // can also written as => .map(\(data: Data, response: URLResponse).data)
+            .decode(type: MovieResponse.self, decoder: JSONDecoder())
+            .map(\.search)
+            .receive(on: DispatchQueue.main)
+            .catch { _ in
+                return Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
         
         /*
         let dataTaskPublisher: URLSession.DataTaskPublisher = URLSession.shared.dataTaskPublisher(for: url)
@@ -40,18 +52,6 @@ class HTTPClient {
          this is map method defined in Publisher protocol.
          Please observe keyPath parameter => KeyPath<Self.Output, T>)
          */
-        
-
-        
-        return URLSession.shared.dataTaskPublisher(for: url)
-            .map(\.data) // can also written as => .map(\(data: Data, response: URLResponse).data)
-            .decode(type: MovieResponse.self, decoder: JSONDecoder())
-            .map(\.search)
-            .receive(on: DispatchQueue.main)
-            .catch { error -> AnyPublisher<[Movie], Error> in
-                return Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
-            }
-            .eraseToAnyPublisher()
     }
 }
 
