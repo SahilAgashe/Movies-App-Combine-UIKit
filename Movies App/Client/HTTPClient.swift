@@ -11,6 +11,11 @@ import Combine
 // Get your API Key by sign up with your email on omdb site "https://www.omdbapi.com/" .
 private let API_KEY = "6829b156"
 
+// SAA_MVDB => Sahil Amrut Agashe Movies Database
+private let SAA_MVDB_API_URL = URL(string: "http://127.0.0.1:8080/saa/mvdb/movies")
+// OMDB API URL FOR BATMAN
+private let OMDB_API_URL = URL(string: "https://www.omdbapi.com/?s=batman&apikey=6829b156")
+
 enum NetworkError: Error {
     case badUrl
 }
@@ -21,8 +26,8 @@ class HTTPClient {
     func fetchMovies(search: String) -> AnyPublisher<[Movie], Error> {
         
         guard let encodedSearch = search.urlEncoded,
-              let url = URL(string: "http://127.0.0.1:8080/saa/mvdb/movies")
-                // URL(string: "https://www.omdbapi.com/?s=\(encodedSearch)&apikey=\(API_KEY)")
+              let url = URL(string: "https://www.omdbapi.com/?s=\(encodedSearch)&apikey=\(API_KEY)")
+                //URL(string: "http://127.0.0.1:8080/saa/mvdb/movies")
         else {
             print("\(kDebugHTTPClient) guard let error!")
             return Fail(error: NetworkError.badUrl).eraseToAnyPublisher()
