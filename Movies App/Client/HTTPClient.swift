@@ -21,7 +21,8 @@ class HTTPClient {
     func fetchMovies(search: String) -> AnyPublisher<[Movie], Error> {
         
         guard let encodedSearch = search.urlEncoded,
-              let url = URL(string: "https://www.omdbapi.com/?s=\(encodedSearch)&apikey=\(API_KEY)")
+              let url = URL(string: "http://127.0.0.1:8080/saa/mvdb/movies")
+                // URL(string: "https://www.omdbapi.com/?s=\(encodedSearch)&apikey=\(API_KEY)")
         else {
             print("\(kDebugHTTPClient) guard let error!")
             return Fail(error: NetworkError.badUrl).eraseToAnyPublisher()
