@@ -17,6 +17,8 @@
 		8198C3D12C10047300492B93 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8198C3D02C10047300492B93 /* MoviesViewController.swift */; };
 		8198C3D62C10256F00492B93 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8198C3D52C10256F00492B93 /* Movie.swift */; };
 		81C0B6E62C11E07500EC0035 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0B6E52C11E07500EC0035 /* HTTPClient.swift */; };
+		81E058AF2C1CB0FB00B97D76 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E058AE2C1CB0FB00B97D76 /* MainTabController.swift */; };
+		81E058B12C1CB15D00B97D76 /* ScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E058B02C1CB15D00B97D76 /* ScannerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		8198C3D02C10047300492B93 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		8198C3D52C10256F00492B93 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		81C0B6E52C11E07500EC0035 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		81E058AE2C1CB0FB00B97D76 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		81E058B02C1CB15D00B97D76 /* ScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				8198C3D02C10047300492B93 /* MoviesViewController.swift */,
+				81E058AE2C1CB0FB00B97D76 /* MainTabController.swift */,
+				81E058B02C1CB15D00B97D76 /* ScannerController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -303,6 +309,8 @@
 			files = (
 				8198C3CF2C1003F700492B93 /* String+Extension.swift in Sources */,
 				8198C3D12C10047300492B93 /* MoviesViewController.swift in Sources */,
+				81E058B12C1CB15D00B97D76 /* ScannerController.swift in Sources */,
+				81E058AF2C1CB0FB00B97D76 /* MainTabController.swift in Sources */,
 				81C0B6E62C11E07500EC0035 /* HTTPClient.swift in Sources */,
 				8165B9982C1492D500B5427B /* MovieListViewModel.swift in Sources */,
 				8198C3982C10027B00492B93 /* AppDelegate.swift in Sources */,
