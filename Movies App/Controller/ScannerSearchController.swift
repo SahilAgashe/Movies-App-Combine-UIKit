@@ -32,7 +32,7 @@ class ScannerSearchController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Go Scanner"
+        navigationItem.title = "Go Scanner"
         view.backgroundColor = .white
         
         view.addSubview(searchTextField)
@@ -41,6 +41,9 @@ class ScannerSearchController: UIViewController {
     
     @objc func barcodeAction() {
         let barcodeScanVC = BarcodeScanController()
+        barcodeScanVC.resultAfterDecodingHandler = { [weak self] resultantString in
+            self?.searchTextField.text = resultantString
+        }
         barcodeScanVC.modalPresentationStyle = .fullScreen
         present(barcodeScanVC, animated: true)
     }

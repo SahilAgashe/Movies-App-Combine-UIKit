@@ -12,7 +12,7 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let moviesController = MoviesViewController(viewModel: MovieListViewModel(httpClient: HTTPClient()))
+        let moviesController = UINavigationController(rootViewController: MoviesViewController(viewModel: MovieListViewModel(httpClient: HTTPClient())))
         moviesController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         
         let scannerSearchController = UINavigationController(rootViewController: ScannerSearchController())

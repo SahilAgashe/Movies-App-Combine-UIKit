@@ -63,6 +63,7 @@ class MoviesViewController: UIViewController {
     
     private func setupUI() {
         
+        navigationItem.title = "My Home"
         view.backgroundColor = .white
         
         // register cells

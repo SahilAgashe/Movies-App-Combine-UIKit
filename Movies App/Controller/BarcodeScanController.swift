@@ -32,6 +32,8 @@ class BarcodeScanController: UIViewController {
         return layer
     }()
     
+    var resultAfterDecodingHandler: ((String) -> Void)?
+    
     public var metadata = [
         AVMetadataObject.ObjectType.upce,
         AVMetadataObject.ObjectType.code39,
@@ -117,5 +119,21 @@ class BarcodeScanController: UIViewController {
 extension BarcodeScanController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         print(kDebugBarcodeScanController, #function)
+        
+        guard !metadataObjects.isEmpty else { return }
+        
+        guard let metadataObj = metadataObjects[0] as? AVMetadataMachineReadableCodeObject,
+              let requiredString = metadataObj.stringValue , metadata.contains(metadataObj.type) 
+        else { return }
+        
+        // After decoding barcode
+        processRequiredString(str: requiredString)
+    }
+    
+    private func processRequiredString(str: String) {
+        print(kDebugBarcodeScanController, "After decoding result => ",str)
+        resultAfterDecodingHandler?(str)
+        resultAfterDecodingHandler = nil
+        dismiss(animated: true)
     }
 }
