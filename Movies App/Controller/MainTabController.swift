@@ -15,7 +15,7 @@ class MainTabController: UITabBarController {
         let moviesController = MoviesViewController(viewModel: MovieListViewModel(httpClient: HTTPClient()))
         moviesController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         
-        let scannerController = ScannerController()
+        let scannerController = UINavigationController(rootViewController: ScannerController())
         scannerController.tabBarItem = UITabBarItem(title: "Scanner", image: UIImage(systemName: "scanner"), selectedImage: UIImage(systemName: "scanner.fill"))
 
         viewControllers = [moviesController, scannerController]

@@ -19,6 +19,8 @@
 		81C0B6E62C11E07500EC0035 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0B6E52C11E07500EC0035 /* HTTPClient.swift */; };
 		81E058AF2C1CB0FB00B97D76 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E058AE2C1CB0FB00B97D76 /* MainTabController.swift */; };
 		81E058B12C1CB15D00B97D76 /* ScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E058B02C1CB15D00B97D76 /* ScannerController.swift */; };
+		81E44C832C1D368A00E7EC22 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E44C822C1D368A00E7EC22 /* UIView+Extension.swift */; };
+		81E44C862C1D3EF300E7EC22 /* UITextField+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E44C852C1D3EF300E7EC22 /* UITextField+UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		81C0B6E52C11E07500EC0035 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		81E058AE2C1CB0FB00B97D76 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		81E058B02C1CB15D00B97D76 /* ScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerController.swift; sourceTree = "<group>"; };
+		81E44C822C1D368A00E7EC22 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		81E44C852C1D3EF300E7EC22 /* UITextField+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+UIView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				8198C3CE2C1003F700492B93 /* String+Extension.swift */,
+				81E44C822C1D368A00E7EC22 /* UIView+Extension.swift */,
+				81E44C852C1D3EF300E7EC22 /* UITextField+UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -307,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81E44C862C1D3EF300E7EC22 /* UITextField+UIView.swift in Sources */,
 				8198C3CF2C1003F700492B93 /* String+Extension.swift in Sources */,
 				8198C3D12C10047300492B93 /* MoviesViewController.swift in Sources */,
 				81E058B12C1CB15D00B97D76 /* ScannerController.swift in Sources */,
@@ -315,6 +322,7 @@
 				8165B9982C1492D500B5427B /* MovieListViewModel.swift in Sources */,
 				8198C3982C10027B00492B93 /* AppDelegate.swift in Sources */,
 				8198C39A2C10027B00492B93 /* SceneDelegate.swift in Sources */,
+				81E44C832C1D368A00E7EC22 /* UIView+Extension.swift in Sources */,
 				8198C3D62C10256F00492B93 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
