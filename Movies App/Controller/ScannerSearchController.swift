@@ -40,6 +40,8 @@ class ScannerSearchController: UIViewController {
     }
     
     @objc func barcodeAction() {
-        print("Barcode Action !!!")
+        let barcodeScanVC = BarcodeScanController()
+        barcodeScanVC.modalPresentationStyle = .fullScreen
+        present(barcodeScanVC, animated: true)
     }
 }
