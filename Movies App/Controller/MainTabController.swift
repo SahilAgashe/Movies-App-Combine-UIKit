@@ -15,10 +15,10 @@ class MainTabController: UITabBarController {
         let moviesController = MoviesViewController(viewModel: MovieListViewModel(httpClient: HTTPClient()))
         moviesController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         
-        let scannerController = UINavigationController(rootViewController: ScannerController())
-        scannerController.tabBarItem = UITabBarItem(title: "Scanner", image: UIImage(systemName: "scanner"), selectedImage: UIImage(systemName: "scanner.fill"))
+        let scannerSearchController = UINavigationController(rootViewController: ScannerSearchController())
+        scannerSearchController.tabBarItem = UITabBarItem(title: "Scanner", image: UIImage(systemName: "scanner"), selectedImage: UIImage(systemName: "scanner.fill"))
 
-        viewControllers = [moviesController, scannerController]
+        viewControllers = [moviesController, scannerSearchController]
         
         tabBar.backgroundColor = .systemBackground
     }

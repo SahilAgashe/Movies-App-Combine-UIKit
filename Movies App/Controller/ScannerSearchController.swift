@@ -1,5 +1,5 @@
 //
-//  ScannerController.swift
+//  ScannerSearchController.swift
 //  Movies App
 //
 //  Created by SAHIL AMRUT AGASHE on 14/06/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScannerController: UIViewController {
+class ScannerSearchController: UIViewController {
     
     private lazy var searchTextField: UISearchTextField = {
         let searchTextField = UISearchTextField()
