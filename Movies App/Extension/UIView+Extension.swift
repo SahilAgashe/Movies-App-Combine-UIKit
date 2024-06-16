@@ -82,4 +82,14 @@ extension UIView {
         anchor(top: view.topAnchor, left: view.leftAnchor,
                bottom: view.bottomAnchor, right: view.rightAnchor)
     }
+    
+    func roundLayer(radius : CGFloat, clipsToBounds: Bool = true){
+        self.clipsToBounds = clipsToBounds
+        layer.cornerRadius = radius
+    }
+    
+    func setBorder(borderColor : UIColor, borderWidth : CGFloat){
+        layer.borderColor = borderColor.cgColor
+        layer.borderWidth = borderWidth
+    }
 }

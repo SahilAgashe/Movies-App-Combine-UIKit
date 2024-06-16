@@ -7,10 +7,13 @@
 
 import UIKit
 import AVFoundation
+import Lottie
 
 private let kDebugBarcodeScanController = "DEBUG BarcodeScanController: "
 class BarcodeScanController: UIViewController {
     
+    // MARK: - Properties
+    public var resultAfterDecodingHandler: ((String) -> Void)?
     
     private lazy var cancelButton: UIButton = {
         let btn = UIButton(type: .system)
@@ -25,6 +28,7 @@ class BarcodeScanController: UIViewController {
     
     private var captureDevice: AVCaptureDevice? = AVCaptureDevice.default(for: AVMediaType.video)
     private var captureSession: AVCaptureSession = AVCaptureSession()
+    
     private lazy var captureVideoPreviewLayer: AVCaptureVideoPreviewLayer = {
         let layer = AVCaptureVideoPreviewLayer(session: captureSession)
         layer.videoGravity = .resize
@@ -32,9 +36,7 @@ class BarcodeScanController: UIViewController {
         return layer
     }()
     
-    var resultAfterDecodingHandler: ((String) -> Void)?
-    
-    public var metadata = [
+    private var metadata = [
         AVMetadataObject.ObjectType.upce,
         AVMetadataObject.ObjectType.code39,
         AVMetadataObject.ObjectType.code39Mod43,
@@ -47,20 +49,68 @@ class BarcodeScanController: UIViewController {
         AVMetadataObject.ObjectType.aztec
     ]
     
+    private lazy var fingerPrintView:UIView = {
+        let container = UIView()
+        container.frame = view.frame
+        
+        // Finger print aninmation
+        let animationView = LottieAnimationView()
+        animationView.animation = LottieAnimation.named("fingerprint")
+        animationView.loopMode = .loop
+        animationView.play()
+        animationView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        animationView.center = CGPoint(x: view.frame.width / 2, y: view.frame.height - 200)
+        
+        // Tap and hold screen label
+        let label = UILabel(frame:CGRect(x: 0, y: 0, width: 300, height: 30))
+        label.textAlignment = .center
+        label.text = "Long Press To Scan!"
+        label.textColor = UIColor.white
+        label.numberOfLines = 0
+        label.center = CGPoint(x: view.frame.width / 2, y: view.frame.height - 120)
+        
+        // Long press gesture
+        let gestureView = UIView(frame: container.frame)
+        let gesture = UILongPressGestureRecognizer()
+        gesture.addTarget(self, action: #selector(longPressHandler))
+        gestureView.addGestureRecognizer(gesture)
+        
+        // Add subviews
+        container.addSubview(animationView)
+        container.addSubview(label)
+        container.addSubview(gestureView)
+        return container
+    }()
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         requestForCameraAccess()
     }
     
+    // MARK: - Selectors
     @objc func cancelButtonAction() {
         dismiss(animated: true)
     }
     
+    @objc func longPressHandler(sender: UILongPressGestureRecognizer) {
+        print(kDebugBarcodeScanController, #function)
+        switch sender.state {
+        case .began:
+            fingerPrintView.isHidden = true
+        case .ended:
+            fingerPrintView.isHidden = false
+        default: break
+        }
+    }
+    
+    // MARK: - Helpers
     private func configureUI() {
         captureVideoPreviewLayer.frame = view.layer.bounds
         view.layer.addSublayer(captureVideoPreviewLayer)
         
+        view.addSubview(fingerPrintView)
         view.addSubview(cancelButton)
         cancelButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, paddingTop: 20, paddingRight: 20 ,width: 90, height: 35)
     }
@@ -114,8 +164,16 @@ class BarcodeScanController: UIViewController {
         }
     }
     
+    private func processRequiredString(str: String) {
+        print(kDebugBarcodeScanController, "After decoding result => ",str)
+        resultAfterDecodingHandler?(str)
+        resultAfterDecodingHandler = nil
+        dismiss(animated: true)
+    }
+    
 }
 
+// MARK: - AVCaptureMetadataOutputObjectsDelegate
 extension BarcodeScanController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         print(kDebugBarcodeScanController, #function)
@@ -128,12 +186,5 @@ extension BarcodeScanController: AVCaptureMetadataOutputObjectsDelegate {
         
         // After decoding barcode
         processRequiredString(str: requiredString)
-    }
-    
-    private func processRequiredString(str: String) {
-        print(kDebugBarcodeScanController, "After decoding result => ",str)
-        resultAfterDecodingHandler?(str)
-        resultAfterDecodingHandler = nil
-        dismiss(animated: true)
     }
 }
