@@ -49,7 +49,7 @@ class BarcodeScanController: UIViewController {
         AVMetadataObject.ObjectType.aztec
     ]
     
-    private lazy var fingerPrintView:UIView = {
+    private lazy var fingerPrintView: UIView = {
         let container = UIView()
         container.frame = view.frame
         
@@ -82,6 +82,15 @@ class BarcodeScanController: UIViewController {
         return container
     }()
     
+    private lazy var focusView: UIView = {
+        let focusView = UIView()
+        focusView.setBorder(borderColor: .white, borderWidth: 2.0)
+        focusView.roundLayer(radius: 6)
+        focusView.setShadow(color: .white, width: 0.0, height: 0.0, radius: 10.0, opacity: 0.9)
+        focusView.frame = CGRect(x: (view.frame.width - 218) / 2, y: (view.frame.height - 150) / 2, width: 218, height: 150)
+        return focusView
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,6 +120,7 @@ class BarcodeScanController: UIViewController {
         view.layer.addSublayer(captureVideoPreviewLayer)
         
         view.addSubview(fingerPrintView)
+        view.addSubview(focusView)
         view.addSubview(cancelButton)
         cancelButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor, paddingTop: 20, paddingRight: 20 ,width: 90, height: 35)
     }
