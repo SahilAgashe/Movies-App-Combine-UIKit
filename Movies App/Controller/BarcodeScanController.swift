@@ -28,7 +28,7 @@ class BarcodeScanController: UIViewController {
     private lazy var captureVideoPreviewLayer: AVCaptureVideoPreviewLayer = {
         let layer = AVCaptureVideoPreviewLayer(session: captureSession)
         layer.videoGravity = .resize
-        layer.connection?.videoOrientation = .portrait
+        layer.connection?.videoRotationAngle = .zero
         return layer
     }()
     
